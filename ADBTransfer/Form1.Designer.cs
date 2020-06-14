@@ -81,6 +81,7 @@
             this.btnAddfile.TabIndex = 1;
             this.btnAddfile.Text = "Add Files";
             this.btnAddfile.UseVisualStyleBackColor = true;
+            this.btnAddfile.Click += new System.EventHandler(this.btnAddfile_Click);
             // 
             // folderBrowserDialog1
             // 

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADBTransfer
@@ -47,7 +40,6 @@ namespace ADBTransfer
             string output = compiler.StandardOutput.ReadToEnd().Trim();
             compiler.WaitForExit();
             //check if theres device id
-            Debug.WriteLine(output.Length);
             if (output.Length > 24)
             {
                 compiler = new Process();
@@ -87,7 +79,16 @@ namespace ADBTransfer
         //Display file details to listview.
         private void btnAddfile_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.FileName = "Sample File.file";
+            if (openFileDialog1.ShowDialog().Equals(DialogResult.OK))
+            {
+                new ListViewItem();
+                for (int i = 0; i < openFileDialog1.FileNames.Length; i++)
+                {
+                    addRowListView(openFileDialog1.FileNames[i]);
+                    new ListViewItem();
+                }
+            }
         }
 
         private void btnPush_Click(object sender, EventArgs e)
